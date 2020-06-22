@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-image: url(bg.png);
+	margin:auto;
+	text-align:center;
+}
+#atas{
+	background-color: #00FF00;
+	padding: 20px;
+	height: 70px;
+}#menu {
+	background-color: #00CCFF;
+	height: 20px;
+	width: auto;
+	position:center;
+
+}
+#content{
+	background-color: #FFFFFF;
+	padding: 20px;
+	height: auto;
+	width: 800px;	
+	position:center;
+	margin:auto;
+	border-left:#dcdcdc	;
+}
+#footer{
+	background-color: #00ff00;
+	height: 30px;
+	width: auto;
+}

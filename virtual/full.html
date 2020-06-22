@@ -1,0 +1,81 @@
+<?php
+$host="localhost";
+$user="root";
+$pass="";
+$db="indomaret";
+mysql_connect($host,$user,$pass) or die(mysql_error());
+mysql_select_db($db) or die (mysql_error());
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Full Layout - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="js/easyui.css">
+	<link rel="stylesheet" type="text/css" href="js/icon.css">
+	<link rel="stylesheet" type="text/css" href="js/demo.css">
+	<link rel="stylesheet" type="text/css" href="js/color.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+</head>
+<body class="easyui-layout">
+	<div data-options="region:'north',border:false" style="height:60px;background:#B3DFDA;padding:20px">Informasi Sharing Store</div>
+	<!--Menu right-->
+	<div data-options="region:'west',split:true,title:'Menu'" style="width:210px;padding:10px;">
+	NO TELPHONE
+	<hr/>
+	<div style="margin:10px 0 10px 0;"></div>
+		<a href="#" class="easyui-linkbutton c1" style="width:180px">Kantor</a><br/>
+	<div style="margin:10px 0 10px 0;"></div>
+		<a href="#" class="easyui-linkbutton c1" style="width:180px">Toko</a>
+	<div style="margin:10px 0 10px 0;"></div>
+		<a href="#" class="easyui-linkbutton c1" style="width:180px">Lapangan</a>
+	</div>
+	
+	<div data-options="region:'east',split:true,collapsed:true,title:'East'" style="width:100px;padding:10px;">east region</div>
+	<div data-options="region:'south',border:false" style="height:50px;background:#A9FACD;padding:10px;">south region</div>
+	<!--isi-->
+	<div data-options="region:'center',title:'Center'">
+	<div style="margin:20px 0;"></div>
+	<table class="easyui-datagrid" title="DataGrid Row Style" style="width:700px;height:250px"
+			data-options="
+				singleSelect: true,
+				iconCls: 'icon-save',
+				url: 'datagrid_data1.json',
+				method: 'get',
+				rowStyler: function(index,row){
+					if (row.listprice < 30){
+						return 'background-color:#6293BB;color:#fff;font-weight:bold;';
+					}
+				}
+			">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:80">KDTK</th>
+				<th data-options="field:'productid',width:100">NAMA</th>
+				<th data-options="field:'listprice',width:80,align:'right'">TELKOM</th>
+				<th data-options="field:'unitcost',width:80,align:'right'">SMART</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				$query="select * from tlp_toko";
+				$result=mysql_query($query);
+				while($row=mysql_fetch_array($result)){
+					echo"<tr>
+							<td>$row[kdtk]</td>
+							<td>$row[nama]</td>
+							<td>$row[telkom]</td>
+							<td>$row[smart]</td>
+					</tr>";
+				
+				}
+			?>
+			<tr>
+				<td>
+		
+		</tbody>
+	</table>
+	</div>
+</body>
+</html>
